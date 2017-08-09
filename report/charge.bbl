@@ -1,0 +1,157 @@
+\begin{thebibliography}{10}
+
+\bibitem{CBC_1}
+Laura Gilberg, Ben Zhang, Peter~Y. Zavalij, Vladimir Sindelar, and Lyle Isaacs.
+\newblock {\em Org. Biomol. Chem.}, 13:4041--4050, 2015.
+
+\bibitem{CBC_2}
+Ben Zhang and Lyle Isaacs.
+\newblock {\em J. Med. Chem.}, 57(22):9554--9563, 2014.
+\newblock PMID: 25369565.
+
+\bibitem{Grimme2014}
+Rebecca Sure, Jens Antony, and Stefan Grimme.
+\newblock {\em J. Phys. Chem. B}, 118(12):3431--3440, 2014.
+
+\bibitem{yin2016overview}
+Jian Yin, Niel~M Henriksen, David~R Slochower, Michael~R Shirts, Michael~W
+  Chiu, David~L Mobley, and Michael~K Gilson.
+\newblock Overview of the sampl5 host--guest challenge: Are we doing better?
+\newblock {\em Journal of computer-aided molecular design}, pages 1--19, 2016.
+
+\bibitem{bosisio2016blinded}
+Stefano Bosisio, Antonia~SJS Mey, and Julien Michel.
+\newblock Blinded predictions of host-guest standard free energies of binding
+  in the sampl5 challenge.
+\newblock {\em Journal of Computer-Aided Molecular Design}, pages 1--10, 2016.
+
+\bibitem{Jorgensen1983}
+William~L. Jorgensen, Jayaraman Chandrasekhar, Jeffry~D. Madura, Roger~W.
+  Impey, and Michael~L. Klein.
+\newblock {\em J. Chem. Phys.}, 79(2):926--935, 1983.
+
+\bibitem{AMBER}
+D.~A. Case, T.~A. Darden, T.~E. Cheatham, C.~L. Simmerling, J.~Wang, R.~E.
+  Duke, R.~Luo, R.~C. Walker, W.~Zhang, K.~M. Merz, B.~Roberts, S.~Hayik,
+  A.~Roitberg, G.~Seabra, J.~Swails, A.~W. Goetz, I.~Kolossv\'{a}ry, K.~F.
+  Wong, F.~Paesani, J.~Vanicek, R.~M. Wolf, J.~Liu, X.~Wu, S.~R. Brozell,
+  T.~Steinbrecher, H.~Gohlke, Q.~Cai, X.~Ye, J.~Wang, M.~J. Hsieh, G.~Cui,
+  D.~R. Roe, D.~H. Mathews, M.~G. Seetin, R.~Salomon-Ferrer, C.~Sagui,
+  V.~Babin, T.~Luchko, S.~Gusarov, A.~Kovalenko, and P.~A. Kollman.
+\newblock Amber 12, 2012.
+
+\bibitem{Sire}
+G.~Calabro J.~Michel C.~Woods, A.S.J.~Mey.
+\newblock Sire molecular simulations framework, (n.d.).
+\newblock (accessed May 31, 2016).
+
+\bibitem{OpenMM}
+Peter Eastman, Mark~S. Friedrichs, John~D. Chodera, Randall~J. Radmer,
+  Christopher~M. Bruns, Joy~P. Ku, Kyle~A. Beauchamp, Thomas~J. Lane, Lee-Ping
+  Wang, Diwakar Shukla, Tony Tye, Mike Houston, Timo Stich, Christoph Klein,
+  Michael~R. Shirts, and Vijay~S. Pande.
+\newblock {\em J. Chem. Theory Comput.}, 9(1):461--469, 2013.
+\newblock PMID: 23316124.
+
+\bibitem{CPPTRAJ}
+Daniel~R. Roe and III Thomas E.~Cheatham.
+\newblock {\em J. Chem. Theory Comput.}, 9(7):3084--3095, 2013.
+\newblock PMID: 26583988.
+
+\bibitem{Jorgensen1988}
+William~L. Jorgensen, J.~Kathleen Buckner, Stephane Boudon, and Julian
+  Tirado‐Rives.
+\newblock {\em J. Chem. Phys.}, 89(6):3742--3746, 1988.
+
+\bibitem{Gilson1997}
+Michael~K Gilson, James~A Given, Bruce~L Bush, and J~Andrew McCammon.
+\newblock {\em Biophys. J.}, 72(3):1047, 1997.
+
+\bibitem{Michel2010}
+Julien Michel and Jonathan~W Essex.
+\newblock {\em J. Comput. Aided Mol. Des.}, 24(8):639--658, 2010.
+
+\bibitem{Michel2014}
+Julien Michel, Richard~H Henchman, Georgios Gerogiokas, Michelle~WY Southey,
+  Michael~P Mazanetz, and Richard~J Law.
+\newblock {\em J. Chem. Theory Comput.}, 10(9):4055--4068, 2014.
+
+\bibitem{Reif2014}
+Maria~M Reif and Chris Oostenbrink.
+\newblock {\em J. Comput. Chem.}, 35(3):227--243, 2014.
+
+\bibitem{Rocklin}
+Gabriel~J Rocklin, Sarah~E Boyce, Marcus Fischer, Inbar Fish, David~L Mobley,
+  Brian~K Shoichet, and Ken~A Dill.
+\newblock {\em J. Mol. Biol.}, 425(22):4569--4583, 2013.
+
+\bibitem{Kastenholz1}
+Mika~A Kastenholz and Philippe~H H{\"u}nenberger.
+\newblock {\em J. Chem. Phys.}, 124(12):124106, 2006.
+
+\bibitem{Kastenholz2}
+Mika~A Kastenholz and Philippe~H H{\"u}nenberger.
+\newblock {\em J. Chem. Phys.}, 124(22):224501, 2006.
+
+\bibitem{BWRF}
+Ilario~G. Tironi, René Sperb, Paul~E. Smith, and Wilfred~F. van Gunsteren.
+\newblock {\em J. Chem. Phys.}, 102(13):5451--5459, 1995.
+
+\bibitem{peter2003fast}
+Christine Peter, Wilfred~F van Gunsteren, and Philippe~H H{\"u}nenberger.
+\newblock A fast-fourier transform method to solve continuum-electrostatics
+  problems with truncated electrostatic interactions: Algorithm and application
+  to ionic solvation and ion--ion interaction.
+\newblock {\em The Journal of chemical physics}, 119(23):12205--12223, 2003.
+
+\bibitem{APBS}
+N~Baker, M~Holst, and Feng Wang.
+\newblock {\em J. Comput. Chem.}, 21(15):1343--1352, 2000.
+
+\bibitem{gilson1993computation}
+Michael~K Gilson, Malcolm~E Davis, Brock~A Luty, and J~Andrew McCammon.
+\newblock Computation of electrostatic forces on solvated molecules using the
+  poisson-boltzmann equation.
+\newblock {\em The Journal of Physical Chemistry}, 97(14):3591--3600, 1993.
+
+\bibitem{madura1995electrostatics}
+Jeffry~D Madura, James~M Briggs, Rebecca~C Wade, Malcolm~E Davis, Brock~A Luty,
+  Andrew Ilin, Jan Antosiewicz, Michael~K Gilson, Babak Bagheri, L~Ridgway
+  Scott, et~al.
+\newblock Electrostatics and diffusion of molecules in solution: simulations
+  with the university of houston brownian dynamics program.
+\newblock {\em Computer Physics Communications}, 91(1-3):57--95, 1995.
+
+\bibitem{fogolari2002poisson}
+Federico Fogolari, Alessandro Brigo, and Henriette Molinari.
+\newblock The poisson--boltzmann equation for biomolecular electrostatics: a
+  tool for structural biology.
+\newblock {\em Journal of Molecular Recognition}, 15(6):377--392, 2002.
+
+\bibitem{hopkins2015long}
+Chad~W Hopkins, Scott Le~Grand, Ross~C Walker, and Adrian~E Roitberg.
+\newblock Long-time-step molecular dynamics through hydrogen mass
+  repartitioning.
+\newblock {\em Journal of chemical theory and computation}, 11(4):1864--1874,
+  2015.
+
+\bibitem{Thermostat}
+H.~C. {Andersen}.
+\newblock {\em J. Chem. Phys.}, 72:2384--2393, 1980.
+
+\bibitem{MBAR}
+Michael~R. Shirts and John~D. Chodera.
+\newblock {\em J. Chem. Phys.}, 129(12), 2008.
+
+\bibitem{marenich2009minnesota}
+Aleksandr~V Marenich, Casey~P Kelly, Jason~D Thompson, Gregory~D Hawkins,
+  Candee~C Chambers, David~J Giesen, Paul Winget, Christopher~J Cramer, and
+  Donald~G Truhlar.
+\newblock Minnesota solvation database.
+\newblock {\em University of Minnesota, Minneapolis}, 2009.
+
+\bibitem{LogD}
+Michel~J. Bosisio~S., Mey A. S. J.~S.
+\newblock {\em J. Comput. Aided Mol. Des.}
+
+\end{thebibliography}

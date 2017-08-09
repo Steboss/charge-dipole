@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: charge.aux
+The style file: unsrt.bst
+Database file #1: charge.bib
+Warning--entry type for "Sire" isn't style-file defined
+--line 34 of file charge.bib
+Warning--empty title in CBC_1
+Warning--empty title in CBC_2
+Warning--empty title in Grimme2014
+Warning--empty title in Jorgensen1983
+Name 1 in "C. Woods, A.S.J. Mey, G. Calabro, J. Michel," has a comma at the end for entry Sire
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "C. Woods, A.S.J. Mey, G. Calabro, J. Michel," for entry Sire
+while executing---line 944 of file unsrt.bst
+Warning--empty title in OpenMM
+Warning--empty title in CPPTRAJ
+Warning--empty title in Jorgensen1988
+Warning--empty title in Gilson1997
+Warning--empty title in Michel2010
+Warning--empty title in Michel2014
+Warning--empty title in Reif2014
+Warning--empty title in Rocklin
+Warning--empty title in Kastenholz1
+Warning--empty title in Kastenholz2
+Warning--empty title in BWRF
+Warning--empty title in APBS
+Warning--empty title in Thermostat
+Warning--empty title in MBAR
+Warning--empty title in LogD
+Warning--empty year in LogD
+You've used 29 entries,
+            1791 wiz_defined-function locations,
+            633 strings with 8755 characters,
+and the built_in function-call counts, 7847 in all, are:
+= -- 587
+> -- 532
+< -- 2
++ -- 188
+- -- 159
+* -- 753
+:= -- 1304
+add.period$ -- 70
+call.type$ -- 29
+change.case$ -- 10
+chr.to.int$ -- 0
+cite$ -- 49
+duplicate$ -- 260
+empty$ -- 675
+format.name$ -- 159
+if$ -- 1631
+int.to.chr$ -- 0
+int.to.str$ -- 29
+missing$ -- 27
+newline$ -- 131
+num.names$ -- 29
+pop$ -- 67
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 107
+stack$ -- 0
+substring$ -- 607
+swap$ -- 39
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 20
+while$ -- 68
+width$ -- 31
+write$ -- 281
+(There were 2 error messages)

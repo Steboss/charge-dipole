@@ -1,0 +1,29 @@
+Can we define the overlap between RF-thery and RF calculations by taking the single point 
+calculations?
+in this folder I am going to test carge-dipole interactions (computed with BWRF) and my 
+derived RF charge-dipole at different theta and dipole bond length l.
+
+
+
+Usage:
+
+In inputfiles there are the TOP, CRD and rotation.py  script
+
+rotation.py creates all the folders, scaling the dipole bondlength by 100 values
+In each folder "l_*" there are 120 folders, referred to the angle theta between
+the ion and the dipole.
+Theta is scan from 0 to 360 by 3 deg. In each "*_deg" folder the computed results "computed.dat"
+and theoretical calculations "theory.dat" are saved. In these files the potential 
+energy and the distances are saved.
+
+For each folder I have created a "create_plot.py" to save png images of plots where I am comparing
+the computed results with theoretical ones. Furthermore, in each "l_*" folder I have create an 
+ipynb, to visualize all the plots and see when there is an agreement between theory and prediction
+(treshold <0.01 kcal/mol) 
+
+Finall, once all the "l_*" folder are created, everything can be analyzed running "analyze.sh".
+The script will create "theta_dist.csv" file, where the dipol bond length, theta and distance where
+the two curves overlap are written.
+
+This "theta_dist.csv"  file is then processed in "heatmap_distance.ipynb", to create an heat map and
+a plot with the average distance +/- std.err 

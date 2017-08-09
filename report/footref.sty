@@ -1,0 +1,9 @@
+% from scrextend (Koma script)
+\makeatletter
+\providecommand*{\footref}[1]{%
+  \begingroup
+    \unrestored@protected@xdef\@thefnmark{\ref{#1}}%
+  \endgroup
+  \@footnotemark
+}
+\makeatother

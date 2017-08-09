@@ -1,0 +1,9 @@
+First test:
+
+Trying to find te best dipole properties to match the Coulombic charge-dipole
+interaction for a TIP3P dipole moment (0.48 eA)
+In this approach I am scaling both the bond length and charges of the dipole
+
+Results:
+
+After a correct calibration of the script, all the curves coincide

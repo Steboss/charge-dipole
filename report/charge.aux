@@ -1,0 +1,129 @@
+\relax 
+\citation{CBC_1}
+\citation{CBC_2}
+\citation{Grimme2014}
+\citation{yin2016overview}
+\citation{bosisio2016blinded}
+\citation{Jorgensen1983}
+\citation{AMBER}
+\citation{Sire}
+\citation{OpenMM}
+\citation{CPPTRAJ}
+\citation{Jorgensen1988}
+\citation{Gilson1997}
+\citation{Michel2010}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Methods}{1}}
+\newlabel{sec:methods}{{1}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Dataset and molecules parametrization}{1}}
+\newlabel{sec:parametrization}{{1.1}{1}}
+\@writefile{lod}{\contentsline {todos}{{1. }Add image of the CBC Datasetand CBC (SAMPL5 paper HG)}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Alchemical binding free energy}{1}}
+\newlabel{sec:freeenergy}{{1.2}{1}}
+\@writefile{lod}{\contentsline {todos}{{2. }add picture for the TD cycle double annihilation}{1}}
+\newlabel{eq:dgbind}{{1}{1}}
+\citation{Michel2014}
+\newlabel{eq:annihilation}{{2}{2}}
+\newlabel{eq:restraint}{{3}{2}}
+\newlabel{eq:DGrestr}{{4}{2}}
+\newlabel{eq:DGrestrcomp}{{5}{2}}
+\citation{Reif2014}
+\citation{Rocklin}
+\citation{Kastenholz1}
+\citation{Kastenholz2}
+\citation{BWRF}
+\citation{Kastenholz1}
+\citation{Kastenholz2}
+\citation{Rocklin}
+\citation{peter2003fast}
+\citation{APBS}
+\newlabel{eq:DGrestr2}{{6}{3}}
+\newlabel{eq:vrestr}{{7}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Poisson-Boltzmann equation for charging free energy corrections}{3}}
+\newlabel{sec:pbcorrection}{{1.3}{3}}
+\newlabel{eq:DGPOL}{{8}{3}}
+\citation{gilson1993computation}
+\citation{madura1995electrostatics}
+\citation{fogolari2002poisson}
+\newlabel{eq:DGNPHG}{{9}{4}}
+\newlabel{eq:DGNPcoul}{{10}{4}}
+\newlabel{eq:DGPSUM}{{11}{4}}
+\newlabel{eq:DGDIR}{{12}{4}}
+\citation{hopkins2015long}
+\citation{Thermostat}
+\citation{BWRF}
+\citation{MBAR}
+\newlabel{eq:DGCOR}{{13}{5}}
+\newlabel{eq:DGBINDCOR}{{14}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}A termodynamic cycle for charging free energy corrections}{5}}
+\newlabel{sec:tdcorrection}{{1.4}{5}}
+\newlabel{eq:DGCORion}{{15}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Alchemical free energy production simulations}{5}}
+\newlabel{sec:afesim}{{1.5}{5}}
+\citation{Kastenholz1}
+\citation{Kastenholz2}
+\citation{marenich2009minnesota}
+\newlabel{eq:stderr}{{16}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Results}{6}}
+\newlabel{sec:results}{{2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Test on sodium ion}{6}}
+\newlabel{sec:naion}{{2.1}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Sodium hydration free energy corrected with PB code approach. $\Delta G_\mathrm  {solv}$ is the solvation free energy obtained from normal MD simulations, $\Delta G_\mathrm  {COR}$ is the average correction term from PB code, as explain in \nobreakspace  {}1.3\hbox {} and $ \Delta G_\mathrm  {solv-cor}$ is the final correct hydration free energy estimation. Each free energy is expressed in kcal mol$^{-1}$ along with the standard error (err) }}{7}}
+\newlabel{tab:naion}{{1}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Hydration free energy estimations for acetate and methylammonium with PB code charging corrections. $ \Delta G_\mathrm  {solv} $ is the solvation free energy obtained from normal MD simulations, $\Delta G_\mathrm  {COR}$ is the average correction term from PB code and $ \Delta G_\mathrm  {solv-cor}$ is the final corrected hydration free energy. Each free energy is expressed in kcal mol$^{-1}$ along with the standard error (err)}}{7}}
+\newlabel{tab:ammonium}{{2}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Binding free energy with charging correction}{7}}
+\newlabel{sec:bindingcharging}{{2.2}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparison between standard free energy of binding $\Delta G_\mathrm  {bind}^\circ $, standard free energy of binding after charging correction $\Delta G_\mathrm  {bind-cor}^\circ $ and experimental binding free energy $\Delta G_\mathrm  {EXP}$ adopting ``SAMPL5 box'' protocol }}{8}}
+\newlabel{fig:fig1}{{1}{8}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Details of charging free energy correction for ``SAMPL5 box'' protocol: $Q_\mathrm  {L}$ is the solute charge in $e$, $\Delta G_\mathrm  {bind}^\circ $ the standard free energy of binding, $\Delta G_\mathrm  {COR}$ the charging free energy correction term evaluated with PB code, $\Delta G_\mathrm  {bind--cor}^\circ $ the standard free energy of binding with charging correction, $\Delta G_\mathrm  {EXP}$ the experimental binding free energy. All the values are expressed in kcal mol$^{-1}$ along with standard error of the mean (err)}}{8}}
+\newlabel{tab:tab1PBSAMPL5}{{3}{8}}
+\citation{Reif2014}
+\citation{Rocklin}
+\citation{LogD}
+\@writefile{lod}{\contentsline {todos}{{3. }This is very strange, SAMPL5 sire 15.1 HMR was more stable in boundphase vanishing step vs same box dim for hostguest sire 16.1 allbonds constraints }{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparison between standard free energy of binding $\Delta G_\mathrm  {bind}^\circ $, standard free energy of binding after charging correction $\Delta G_\mathrm  {bind-cor}^\circ $ and experimental binding free energy $\Delta G_\mathrm  {EXP}$ using ``iso box'' protocol to prepare the free phase system }}{10}}
+\newlabel{fig:fig2}{{2}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Details of charging free energy correction with ``iso box'' protocol: $Q_\mathrm  {L}$ is the solute charge in $e$, $\Delta G_\mathrm  {bind}^\circ $ the standard free energy of binding, $\Delta G_\mathrm  {COR}$ the charging free energy correction term evaluated with PB code, $\Delta G_\mathrm  {bind--cor}^\circ $ the standard free energy of binding with charging correction, $\Delta G_\mathrm  {EXP}$ the experimental binding free energy. All the values are expressed in kcal mol$^{-1}$ along with standard error of the mean (err)}}{11}}
+\newlabel{tab:tab2PBiso}{{4}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Thermodynamic cycle approach for charging free energy corrections}{11}}
+\newlabel{sec:tdbindingcharging}{{2.3}{11}}
+\@writefile{lod}{\contentsline {todos}{{4. }Fix results of SAMPL5box with SAMPL5 real results. Some of them are different since I did not add LJLRC, but why G8 is so different?}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Standard free energy of binding $\Delta G_\mathrm  {bind}^\circ $, charging free energy correction $\Delta G^\mathrm  {TDion}_\mathrm  {COR}$ evaluated with thermodynamic cycle \nobreakspace  {}1.4\hbox {} and standard free energy of binding with charging correction $\Delta G_\mathrm  {bind-cor}^\circ $ along with standard error (err) for ``SAMPL5 box'' protocol }}{11}}
+\newlabel{tab:tab4TDSAMPL5}{{5}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison between standard free energy of binding $\Delta G_\mathrm  {bind}^\circ $, standard free energy of binding after charging correction with thermodynamic cycle $\Delta G_\mathrm  {bind-cor}^\circ $ \nobreakspace  {}1.4\hbox {} and experimental binding free energy $\Delta G_\mathrm  {EXP}$ with ``SAMPL5 box'' parametrization}}{12}}
+\newlabel{fig:fig3}{{3}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Details of charging free energy correction: $Q_\mathrm  {L}$ is the solute charge in $e$, $\Delta G_\mathrm  {bind}^\circ $ the standard free energy of binding, $\Delta G_\mathrm  {COR}$ the charging free energy correction term, $\Delta G_\mathrm  {bind-cor}^\circ $ the standard free energy of binding with charging correction, $\Delta G_\mathrm  {EXP}$ the experimental binding free energy. All the values are expressed in kcal mol$^{-1}$ along with standard error (err)}}{13}}
+\newlabel{tab:tab5TDISOBOX}{{6}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparison between ``iso box'' standard free energy of binding $\Delta G_\mathrm  {bind}^\circ $, standard free energy of binding after charging correction with thermodynamic cycle $\Delta G_\mathrm  {bind-cor}^\circ $ \nobreakspace  {}1.4\hbox {} and experimental binding free energy $\Delta G_\mathrm  {EXP}$ }}{13}}
+\newlabel{fig:fig4}{{4}{13}}
+\bibstyle{unsrt}
+\bibdata{charge}
+\bibcite{CBC_1}{1}
+\bibcite{CBC_2}{2}
+\bibcite{Grimme2014}{3}
+\bibcite{yin2016overview}{4}
+\bibcite{bosisio2016blinded}{5}
+\bibcite{Jorgensen1983}{6}
+\bibcite{AMBER}{7}
+\bibcite{Sire}{8}
+\bibcite{OpenMM}{9}
+\bibcite{CPPTRAJ}{10}
+\bibcite{Jorgensen1988}{11}
+\bibcite{Gilson1997}{12}
+\bibcite{Michel2010}{13}
+\bibcite{Michel2014}{14}
+\bibcite{Reif2014}{15}
+\bibcite{Rocklin}{16}
+\bibcite{Kastenholz1}{17}
+\bibcite{Kastenholz2}{18}
+\bibcite{BWRF}{19}
+\bibcite{peter2003fast}{20}
+\bibcite{APBS}{21}
+\bibcite{gilson1993computation}{22}
+\bibcite{madura1995electrostatics}{23}
+\bibcite{fogolari2002poisson}{24}
+\bibcite{hopkins2015long}{25}
+\bibcite{Thermostat}{26}
+\bibcite{MBAR}{27}
+\bibcite{marenich2009minnesota}{28}
+\bibcite{LogD}{29}

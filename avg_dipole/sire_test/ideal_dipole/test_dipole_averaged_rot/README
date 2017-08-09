@@ -1,0 +1,7 @@
+Here I am trying to study the rotationally average charge dipole
+potential by playing with Sire
+Unfortunately this test won't work
+The problem is that we ar emissing a weight in the algorithm,  which 
+cannot be implemented, since it comes from an ensemble average
+Thus, if we were running a simulation with charge and dipole we 
+would obtain the correct answer

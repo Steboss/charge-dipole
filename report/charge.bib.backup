@@ -1,0 +1,469 @@
+@Article{Thermostat,
+  Author                   = {{Andersen}, H.~C.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1980},
+  Pages                    = {2384-2393},
+  Volume                   = {72},
+
+  Adsnote                  = {Provided by the SAO/NASA Astrophysics Data System},
+  Adsurl                   = {http://adsabs.harvard.edu/abs/1980JChPh..72.2384A},
+  Keywords                 = {Computer simulation of liquid structure}
+}
+
+
+@Article{APBS,
+  Author                   = {Baker, N and Holst, M and Wang, Feng},
+  Journal                  = {J. Comput. Chem.},
+  Year                     = {2000},
+  Number                   = {15},
+  Pages                    = {1343--1352},
+  Volume                   = {21},
+
+  Publisher                = {Wiley Online Library}
+}
+
+
+@Article{LogD,
+  Author                   = {Bosisio S., Mey A. S. J. S., Michel J.},
+  Journal                  = {J. Comput. Aided Mol. Des.},
+
+  Owner                    = {steboss},
+  Timestamp                = {2016.06.13}
+}
+
+@Electronic{Sire,
+  Title                    = {Sire Molecular Simulations Framework, (n.d.).},
+  Author                   = {C. Woods, A.S.J. Mey, G. Calabro, J. Michel,},
+  Note                     = {(accessed May 31, 2016)},
+  Url                      = {http://siremol.org/},
+
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12}
+}
+
+@Misc{AMBER,
+  Title                    = {AMBER 12},
+
+  Author                   = {Case, D. A. and Darden, T. A. and Cheatham, T. E. and Simmerling, C. L. and Wang, J. and Duke, R. E. and Luo, R. and Walker, R. C. and Zhang, W. and Merz, K. M. and Roberts, B. and Hayik, S. and Roitberg, A. and Seabra, G. and Swails, J. and Goetz, A. W. and Kolossv\'{a}ry, I. and Wong, K. F. and Paesani, F. and Vanicek, J. and Wolf, R. M. and Liu, J. and Wu, X. and Brozell, S. R. and Steinbrecher, T. and Gohlke, H. and Cai, Q. and Ye, X. and Wang, J. and Hsieh, M. J. and Cui, G. and Roe, D. R. and Mathews, D. H. and Seetin, M. G. and Salomon-Ferrer, R. and Sagui, C. and Babin, V. and Luchko, T. and Gusarov, S. and Kovalenko, A. and Kollman, P. A.},
+  Year                     = {2012},
+
+  Citeulike-article-id     = {10779586},
+  Citeulike-linkout-0      = {http://ambermd.org/},
+  Institution              = {University of California, San Francisco},
+  Keywords                 = {molecular\_dynamics, software},
+  Organization             = {University of California, San Francisco},
+  Owner                    = {steboss},
+  Posted-at                = {2012-06-11 14:08:39},
+  Publisher                = {University of California, San Francisco},
+  Timestamp                = {2016.04.12},
+  Url                      = {http://ambermd.org/}
+}
+
+
+@Article{OpenMM,
+  Author                   = {Peter Eastman and Mark S. Friedrichs and John D. Chodera and Randall J. Radmer and Christopher M. Bruns and Joy P. Ku and Kyle A. Beauchamp and Thomas J. Lane and Lee-Ping Wang and Diwakar Shukla and Tony Tye and Mike Houston and Timo Stich and Christoph Klein and Michael R. Shirts and Vijay S. Pande},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2013},
+  Note                     = {PMID: 23316124},
+  Number                   = {1},
+  Pages                    = {461-469},
+  Volume                   = {9},
+
+  Eprint                   = { http://dx.doi.org/10.1021/ct300857j 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12}
+}
+
+@Book{FrenkelSmit2001,
+  Title                    = {Understanding Molecular Simulation},
+  Author                   = {Frenkel, Daan and Smit, Berend},
+  Publisher                = {Academic Press, Inc.},
+  Year                     = {2001},
+
+  Address                  = {Orlando, FL, USA},
+  Edition                  = {2nd},
+
+  ISBN                     = {0122673514}
+}
+
+
+@Article{CBC_1,
+  Author                   = {Gilberg, Laura and Zhang, Ben and Zavalij, Peter Y. and Sindelar, Vladimir and Isaacs, Lyle},
+  Journal                  = {Org. Biomol. Chem.},
+  Year                     = {2015},
+  Pages                    = {4041-4050},
+  Volume                   = {13},
+
+  Issue                    = {13},
+  Owner                    = {steboss},
+  Publisher                = {The Royal Society of Chemistry},
+  Timestamp                = {2016.04.21}
+}
+
+@Article{Gilson1997,
+  Author                   = {Gilson, Michael K and Given, James A and Bush, Bruce L and McCammon, J Andrew},
+  Journal                  = {Biophys. J.},
+  Year                     = {1997},
+  Number                   = {3},
+  Pages                    = {1047},
+  Volume                   = {72},
+
+  Publisher                = {The Biophysical Society}
+}
+
+@Article{Guthrie2009,
+  Author                   = {J. Peter Guthrie},
+  Journal                  = {J. Phys. Chem. B},
+  Year                     = {2009},
+  Note                     = {PMID: 19338360},
+  Number                   = {14},
+  Pages                    = {4501-4507},
+  Volume                   = {113},
+
+  Doi                      = {10.1021/jp806724u},
+  Eprint                   = { http://dx.doi.org/10.1021/jp806724u },
+  Url                      = { http://dx.doi.org/10.1021/jp806724u }
+}
+
+
+@Article{HMR,
+  Author                   = {Chad W. Hopkins and Scott Le Grand and Ross C. Walker and Adrian E. Roitberg},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2015},
+  Note                     = {PMID: 26574392},
+  Number                   = {4},
+  Pages                    = {1864-1874},
+  Volume                   = {11},
+
+  Eprint                   = { http://dx.doi.org/10.1021/ct5010406 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12}
+}
+
+@Article{Jakalian2001,
+  Author                   = {Jakalian, A. and Bush, B.L. and Jack, D.B. and Bayly, C.I.},
+  Journal                  = {J. Comput. Chem.},
+  Year                     = {2000},
+  Note                     = {cited By 552},
+  Number                   = {2},
+  Pages                    = {132-146},
+  Volume                   = {21},
+
+  Document_type            = {Article},
+  Owner                    = {steboss},
+  Source                   = {Scopus},
+  Timestamp                = {2016.04.12}
+}
+
+
+@Article{Jorgensen1988,
+  Author                   = {Jorgensen, William L. and Buckner, J. Kathleen and Boudon, Stephane and Tirado‐Rives, Julian},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1988},
+  Number                   = {6},
+  Pages                    = {3742-3746},
+  Volume                   = {89},
+
+  Doi                      = {http://dx.doi.org/10.1063/1.454895},
+  Url                      = {http://scitation.aip.org/content/aip/journal/jcp/89/6/10.1063/1.454895}
+}
+
+@Article{Jorgensen1983,
+  Author                   = {Jorgensen, William L. and Chandrasekhar, Jayaraman and Madura, Jeffry D. and Impey, Roger W. and Klein, Michael L.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1983},
+  Number                   = {2},
+  Pages                    = {926-935},
+  Volume                   = {79},
+
+  __markedentry            = {[steboss:6]},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.11}
+}
+
+@Article{FEP,
+  Author                   = {Jorgensen, William L. and Ravimohan, C.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1985},
+  Number                   = {6},
+  Pages                    = {3050-3054},
+  Volume                   = {83},
+
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.22}
+}
+
+@Article{Jorgensen2008,
+  Author                   = {Jorgensen, William L and Thomas, Laura L},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2008},
+  Number                   = {6},
+  Pages                    = {869--876},
+  Volume                   = {4},
+
+  Publisher                = {ACS Publications}
+}
+
+@Article{Kastenholz1,
+  Author                   = {Kastenholz, Mika A and H{\"u}nenberger, Philippe H},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {2006},
+  Number                   = {12},
+  Pages                    = {124106},
+  Volume                   = {124},
+
+  Publisher                = {AIP Publishing}
+}
+
+@Article{Kastenholz2,
+  Author                   = {Kastenholz, Mika A and H{\"u}nenberger, Philippe H},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {2006},
+  Number                   = {22},
+  Pages                    = {224501},
+  Volume                   = {124},
+
+  Publisher                = {AIP Publishing}
+}
+
+@Article{Finitesize,
+  Author                   = {Mika A. Kastenholz and and Philippe H. Hünenberger},
+  Journal                  = {J. Phys. Chem. B},
+  Year                     = {2004},
+  Number                   = {2},
+  Pages                    = {774-788},
+  Volume                   = {108},
+
+  Eprint                   = { http://dx.doi.org/10.1021/jp0350924 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.22}
+}
+
+@Article{Mezei,
+  Author                   = {Mezei, M.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1987},
+  Number                   = {12},
+  Pages                    = {7084-7088},
+  Volume                   = {86},
+
+  Doi                      = {http://dx.doi.org/10.1063/1.452357},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12},
+  Url                      = {http://scitation.aip.org/content/aip/journal/jcp/86/12/10.1063/1.452357}
+}
+
+@Article{Michel2014pccp,
+  Author                   = {Michel, Julien},
+  Journal                  = {Phys. Chem. Chem. Phys.},
+  Year                     = {2014},
+  Number                   = {10},
+  Pages                    = {4465--4477},
+  Volume                   = {16},
+
+  Publisher                = {Royal Society of Chemistry}
+}
+
+@Article{Michel2010,
+  Author                   = {Michel, Julien and Essex, Jonathan W},
+  Journal                  = {J. Comput. Aided Mol. Des.},
+  Year                     = {2010},
+  Number                   = {8},
+  Pages                    = {639--658},
+  Volume                   = {24},
+
+  Publisher                = {Springer}
+}
+
+@Article{Michel2014,
+  Author                   = {Michel, Julien and Henchman, Richard H and Gerogiokas, Georgios and Southey, Michelle WY and Mazanetz, Michael P and Law, Richard J},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2014},
+  Number                   = {9},
+  Pages                    = {4055--4068},
+  Volume                   = {10},
+
+  Publisher                = {ACS Publications}
+}
+
+@Article{Mikulskis2014,
+  Author                   = {Mikulskis, Paulius and Cioloboc, Daniela and Andreji{\'c}, Milica and Khare, Sakshi and Brorsson, Joakim and Genheden, Samuel and Mata, Ricardo A and S{\"o}derhjelm, P{\"a}r and Ryde, Ulf},
+  Journal                  = {J. Comput. Aided Mol. Des.},
+  Year                     = {2014},
+  Number                   = {4},
+  Pages                    = {375--400},
+  Volume                   = {28},
+
+  Publisher                = {Springer}
+}
+@Article{Reif2014,
+  Author                   = {Reif, Maria M and Oostenbrink, Chris},
+  Journal                  = {J. Comput. Chem.},
+  Year                     = {2014},
+  Number                   = {3},
+  Pages                    = {227--243},
+  Volume                   = {35},
+
+  Publisher                = {Wiley Online Library}
+}
+
+@Article{RobertsonJorgensen,
+  Author                   = {Michael J. Robertson and Julian Tirado-Rives and William L. Jorgensen},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2015},
+  Note                     = {PMID: 26190950},
+  Number                   = {7},
+  Pages                    = {3499-3509},
+  Volume                   = {11},
+
+  Eprint                   = { http://dx.doi.org/10.1021/acs.jctc.5b00356 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.21}
+}
+
+@Article{Rocklin,
+  Author                   = {Rocklin, Gabriel J and Boyce, Sarah E and Fischer, Marcus and Fish, Inbar and Mobley, David L and Shoichet, Brian K and Dill, Ken A},
+  Journal                  = {J. Mol. Biol.},
+  Year                     = {2013},
+  Number                   = {22},
+  Pages                    = {4569--4583},
+  Volume                   = {425},
+
+  Publisher                = {Elsevier}
+}
+
+@Article{CPPTRAJ,
+  Author                   = {Daniel R. Roe and Thomas E. Cheatham, III},
+  Journal                  = {J. Chem. Theory Comput.},
+  Year                     = {2013},
+  Note                     = {PMID: 26583988},
+  Number                   = {7},
+  Pages                    = {3084-3095},
+  Volume                   = {9},
+
+  Eprint                   = { http://dx.doi.org/10.1021/ct400341p 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.20}
+}
+
+@Article{MBAR,
+  Author                   = {Shirts, Michael R. and Chodera, John D.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {2008},
+  Number                   = {12},
+  Volume                   = {129},
+
+  Eid                      = {124105},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12}
+}
+
+
+@Article{Grimme2014,
+  Author                   = {Sure, Rebecca and Antony, Jens and Grimme, Stefan},
+  Journal                  = {J. Phys. Chem. B},
+  Year                     = {2014},
+  Number                   = {12},
+  Pages                    = {3431--3440},
+  Volume                   = {118},
+
+  Publisher                = {ACS Publications}
+}
+
+
+@Article{BWRF,
+  Author                   = {Tironi, Ilario G. and Sperb, René and Smith, Paul E. and van Gunsteren, Wilfred F.},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1995},
+  Number                   = {13},
+  Pages                    = {5451-5459},
+  Volume                   = {102},
+
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.12}
+}
+
+
+@Article{GAFF,
+  Author                   = {Wang, Junmei and Wolf, Romain M. and Caldwell, James W. and Kollman, Peter A. and Case, David A.},
+  Journal                  = {J. Comput. Chem.},
+  Year                     = {2004},
+  Number                   = {9},
+  Pages                    = {1157--1174},
+  Volume                   = {25},
+
+  ISSN                     = {1096-987X},
+  Publisher                = {Wiley Subscription Services, Inc., A Wiley Company}
+}
+
+
+@Article{CBC_2,
+  Author                   = {Ben Zhang and Lyle Isaacs},
+  Journal                  = {J. Med. Chem.},
+  Year                     = {2014},
+  Note                     = {PMID: 25369565},
+  Number                   = {22},
+  Pages                    = {9554-9563},
+  Volume                   = {57},
+
+  Eprint                   = { http://dx.doi.org/10.1021/jm501276u 
+},
+  Owner                    = {steboss},
+  Timestamp                = {2016.04.21}
+}
+
+@Article{Zwanzig1954,
+  Author                   = {Zwanzig, Robert W},
+  Journal                  = {J. Chem. Phys.},
+  Year                     = {1954},
+  Number                   = {8},
+  Pages                    = {1420--1426},
+  Volume                   = {22},
+
+  Publisher                = {AIP Publishing}
+}
+
+
+@article{peter2003fast,
+  title={A fast-Fourier transform method to solve continuum-electrostatics problems with truncated electrostatic interactions: Algorithm and application to ionic solvation and ion--ion interaction},
+  author={Peter, Christine and van Gunsteren, Wilfred F and H{\"u}nenberger, Philippe H},
+  journal={The Journal of chemical physics},
+  volume={119},
+  number={23},
+  pages={12205--12223},
+  year={2003},
+  publisher={AIP}
+}
+
+@article{hopkins2015long,
+  title={Long-time-step molecular dynamics through hydrogen mass repartitioning},
+  author={Hopkins, Chad W and Le Grand, Scott and Walker, Ross C and Roitberg, Adrian E},
+  journal={Journal of chemical theory and computation},
+  volume={11},
+  number={4},
+  pages={1864--1874},
+  year={2015},
+  publisher={ACS Publications}
+}
+
+@article{bosisio2016blinded,
+  title={Blinded predictions of host-guest standard free energies of binding in the SAMPL5 challenge},
+  author={Bosisio, Stefano and Mey, Antonia SJS and Michel, Julien},
+  journal={Journal of Computer-Aided Molecular Design},
+  pages={1--10},
+  year={2016},
+  publisher={Springer}
+}
+
+@article{marenich2009minnesota,
+  title={Minnesota solvation database},
+  author={Marenich, Aleksandr V and Kelly, Casey P and Thompson, Jason D and Hawkins, Gregory D and Chambers, Candee C and Giesen, David J and Winget, Paul and Cramer, Christopher J and Truhlar, Donald G},
+  journal={University of Minnesota, Minneapolis},
+  year={2009}
+}
+

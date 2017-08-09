@@ -1,0 +1,30 @@
+The final dipole should carry the same dipole moment of a TIP3P water molecule = 2.35 D
+Thus:
+'''
+2.35 D ~ 0.489256699 eA  (conversion factor 0.20819434 eA)
+'''
+Then :
+'''
+TIP3P(O_charge) = -0.834
+'''
+
+Since  mu = q*d   the distance between the two atoms is 0.586 A
+
+To create the inputfile I started from a previously topology and crd created for an ideal dipole
+molecule
+I then modified with parmed the charges and bond lengths as:
+'''
+from parmed.amber import * 
+
+base = AmberParm(TOP,CRD)
+
+base.residues[0].atoms[0].charge = -0.834
+base.residues[0].atoms[1].charge =  0.834
+
+base.residues[0].atoms[0].bonds[0].type.req = 0.586
+
+base.remake_parm()
+base.write_parm(NEWPARM)
+base.write_rst7(NEWCOORD)
+'''
+

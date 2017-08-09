@@ -1,0 +1,4 @@
+Test on a water molecule by computing th e charge-water electrostatic potential
+for each angle of rotation. Then, I am comparing this potential with the 
+RF potential of charge-dipole, where the dipole is the dipole created by the water
+The dipole angle need to be shifted by pi for convection
