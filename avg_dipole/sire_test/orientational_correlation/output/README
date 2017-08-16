@@ -1,0 +1,28 @@
+Analyses of th ewater orientation in a sodium ion simulation
+In this test we want to verify if there is an orientational correlation 
+in the very first solvation shells  and if the Coulombic potential
+will be the same after the relevant solvation shells (~15 A?)
+
+Files:
+
+master.py : master script to be run to start the analysis
+
+orientation_distribution_function.py : script which actually performs the 
+orientational analysis
+
+parser.py : parser to average all the outputfiles
+
+traj*.dcd : trajectory
+
+output_average: final results + analysis notebook
+
+
+Usage:
+
+python master traj*.dcd ../input/SYSTEM.top ../input/SYSTEM.crd
+
+the script automatically will divide the load of the job into 8 processes 
+which will analyse 2500 frames each ( ~ 1 h of calculation)
+
+python parser.py  
+this script will give the output_average folder
