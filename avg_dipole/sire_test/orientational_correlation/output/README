@@ -8,7 +8,8 @@ Files:
 master.py : master script to be run to start the analysis
 
 orientation_distribution_function.py : script which actually performs the 
-orientational analysis
+orientational analysis WITHOUT RF
+orientation_distribution_function_RF.py : with RF
 
 parser.py : parser to average all the outputfiles
 

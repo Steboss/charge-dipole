@@ -1,5 +1,7 @@
 #July 2017 Stefano Bosisio
 #Test to compute the orientation distribution function for ion and water
+#Usage: python orientation_distribution_function.py  traj TOP WIDTH
+#WIDTH is the width for the shell, it can be 1 A (5-6) or 0.5 A ( 5-5.5-6) or 0.2 (5-5.2-5.4...) and so on...
 
 import sys,os
 import math
@@ -14,7 +16,7 @@ from functools import partial
 one_over_four_pi_eps0 = 332.0637090025476
 dielectric = 82.0
 
-def BarkerWatts(na_coords,res_coords,rcutoff):
+def Coulombic(na_coords,res_coords,rcutoff,distionCOM):
     r"""Function to compute BW reaction field Coulombic interaction potential
 
     Parameters
@@ -33,21 +35,23 @@ def BarkerWatts(na_coords,res_coords,rcutoff):
     """
 
     nacharge = 1.0  #give the ion charge in e
-
-    krf = (1/rcutoff**3)*((dielectric-1)/(2*dielectric+1)) #krf term
     pot = 0.0 #initialise potential 
 
     for key in res_coords.keys():
 		#hard code the charges, since mdtraj cannot retrieve these info
-    	if "H" in key:
-            atcharge = 0.417
-     	elif "O" in key:
-    	    atcharge = -0.834
-     	else:
-     	    continue
+
+		if "H" in key:
+			atcharge = 0.417
+		elif "O" in key:
+			atcharge = -0.834
+		else:
+			continue
+
+		
         #compute distance na and res atoms
-        dist=compute_distance(na_coords,res_coords[key])
-        pot += one_over_four_pi_eps0*(nacharge*atcharge)*((1/dist) + krf*dist**2)
+		dist=compute_distance(na_coords,res_coords[key]) 
+		pot += one_over_four_pi_eps0*(nacharge*atcharge)*((1/dist))
+
 
     return pot
 
@@ -90,22 +94,20 @@ def compute_ion_dipole(na_coords,COM,rcutoff,angle):
 	qion = +1 #e
 	mu = h2*bondlength # dipole moment in eA
 	#the dipole bond length is 0.586 A
-	dist1 = r - 0.5*bondlength*math.cos(angle) # for the negative charge -0.834 e
-	dist2 = r + 0.5*bondlength*math.cos(angle) # positive charge  +0.834 e
+	#dist1 = r - 0.5*bondlength*math.cos(angle) # for the negative charge -0.834 e
+	#dist2 = r + 0.5*bondlength*math.cos(angle) # positive charge  +0.834 e
 	#compute the energy in two ways:
 	#1) charge * charge BWRF
 	#2) charge * dipole BWRF
-	krf= (1/rcutoff**3)*((dielectric-1)/(2*dielectric + 1))
-	pot_ion1 = one_over_four_pi_eps0*(qion*h1)*( (1/dist1) + krf*dist1**2)
-	pot_ion2 = one_over_four_pi_eps0*(qion*h2)*( (1/dist2) + krf*dist2**2)
-	pot_charge_charge = pot_ion1 + pot_ion2
+	#krf= (1/rcutoff**3)*((dielectric-1)/(2*dielectric + 1))
+	#pot_ion1 = one_over_four_pi_eps0*(qion*h1)*( (1/dist1) + krf*dist1**2)
+	#pot_ion2 = one_over_four_pi_eps0*(qion*h2)*( (1/dist2) + krf*dist2**2)
+	#pot_charge_charge = pot_ion1 + pot_ion2
 
 	#2)charge*dipole, derived from Onsager
-	pot_charge_dipole = -one_over_four_pi_eps0*qion*mu*(math.cos(angle))*(1/r**2  -\
-						 2*(r/rcutoff**3)*((dielectric-1)/(2*dielectric + 1)) +\
-						  (1/r**2)*(3/(2*dielectric +1)) )
+	pot_charge_dipole = -one_over_four_pi_eps0*qion*mu*(math.cos(angle))*(1/r**2)  
 	
-	return pot_charge_charge,pot_charge_dipole #they should be the same
+	return pot_charge_dipole #they should be the same
 
 def compute_ion_dipole_rotationally_avg(na_coords,COM,rcutoff):
 	r"""Function to compute the rotationally averaged charge-dipole reaction field
@@ -130,12 +132,9 @@ def compute_ion_dipole_rotationally_avg(na_coords,COM,rcutoff):
 	bondlength = 0.586 # A
 	mu = 0.834*bondlength
 	inv_KT = -1/(3*0.592)
-	epsilon1 = (dielectric -1)/(2*dielectric +1)
-	epsilon2 = 3/(2*dielectric + 1)
-	charge_term = inv_KT*((qion*mu)**2)*one_over_four_pi_eps0*(1/r)**4
-	rf1 = 4*(epsilon1 + epsilon2)**2
-	rf2 = ((4*r**3)/(rcutoff**3))*epsilon1*((epsilon1*(r**3/rcutoff**3)-2) - 2*epsilon2)
-	pot = charge_term*(rf1 + rf2)
+
+	pot = inv_KT*((qion*mu)**2)*(one_over_four_pi_eps0**2)*(1/r)**4
+
 	return pot
 
 def compute_ion_dipole_rotationally_avg_integrated(nwaters,position,rcutoff):
@@ -159,17 +158,14 @@ def compute_ion_dipole_rotationally_avg_integrated(nwaters,position,rcutoff):
 
 	"""
 	r = position
+	ratio = (r**3)/(rcutoff**3)
 	qion = 1.0
 	bondlength = 0.586 # A
 	mu = 0.834*bondlength#eA
 	inv_KT = -1/(3*0.592)
-	epsilon1 = (dielectric -1)/(2*dielectric +1)
-	epsilon2 = 3/(2*dielectric + 1)
-	charge_term = inv_KT*((qion*mu)**2)*one_over_four_pi_eps0*(1/r)**4
-	rf1 = 4*(epsilon1 + epsilon2)**2
-	rf2 = ((4*r**3)/(rcutoff**3))*epsilon1*((epsilon1*((r**3/rcutoff**3)-2)) - 2*epsilon2)
-	pot = charge_term*(rf1 + rf2)
-	return nwaters*pot
+
+	npot = nwaters*inv_KT*((qion*mu)**2)*(one_over_four_pi_eps0**2)*(1/r)**4
+	return npot
 	
 
 
@@ -231,7 +227,7 @@ def compute_angle(na_coords,COM,oxy_coords):
 	angle = math.acos(res)
 	return angle #angle in rads
 
-def readdcd(frame,framenumb,top,rcutoff,pdb=False,pdbcomoxy=False):
+def readdcd(frame,framenumb,top,rcutoff,width=1.0,pdb=False,pdbcomoxy=False):
 	r"""Main Function: this function reads each snapshot and computes the Coulombic energies:
 	1) Barker Watts Coulombic interaction between the ion and the water charges-->BWRF-->BarkerWatts()
 	2) Barker Watts Coulombic interaction between the ion and the dipole charges-->BWRF_charge_charge-->compute_ion_dipole
@@ -253,31 +249,41 @@ def readdcd(frame,framenumb,top,rcutoff,pdb=False,pdbcomoxy=False):
 	pdb:	bool
 			Whether or not save the whole system in pdb files
 	
+	rcutoff: float64	
+			Radius of cutoff copmuted as the smallest box size
+		
+	width:  float64
+			width of each shell, default 1 Angstrom
+	
 	pdbcomoxy:	bool
 			Wheter or not save pdbs of COM and oxygens, to verify the ion-dipole angle
 
 	Returns
 	----------
-	BWRF:	dictionary
-			dictionary with all the energies for a specific shell
-			e.g.  BWRF[3] = {1.00, 2.00,3.00...} where 3, in Angstrom, is the shell length
+	Coulombic:	dictionary
+			dictionary with all the energies for a specific shell with Coulombic potential
+			e.g.  Coulombic[3] = {1.00, 2.00,3.00...} where 3, in Angstrom, is the shell length
 			and 1.00,2.00,3.00 the energies computed from all the ion-water interactions
 	
-	BWRF_charge_charge: dictionary
-			dictionary with all the energies for the BWRF ion-charge ion-charge
-	
-	RF_charge_dipole: dictionary
-			dictionary with all the energies for the RF charge-dipole interactions
+			print(dist)
+			sys.exit(-1)
+	charge_dipole: dictionary
+			dictionary with all the energies for the charge-dipole interactions
 
-	AVG_RF_charge_dipole: dictionary
-			dictionary with all the energies for the RF AVG ROT charge-dipole interaction
+	avg_rot_charge_dipole: dictionary
+			dictionary with all the energies for the rotationally averaged charge-dipole interaction
+
+	angles:	dictionary
+			dictionary with all the ion-COM-oxygen angles, namely ion - dipole angle theta, for 
+			each shell
 	"""
 	#energy dictionaries:
-	BWRF =  {} #-->BarkerWatts 
-	BWRF_charge_charge = {} #-->compute_ion_dipole
-	RF_charge_dipole = {} #-->compute_ion_dipole
-	AVG_RF_charge_dipole = {} #-->compute_ion_dipole_rotationally_avg
+	coulomb =  {} #-->Coulombic 
+	#BWRF_charge_charge = {} #-->compute_ion_dipole
+	charge_dipole = {} #-->compute_ion_dipole
+	avg_rot_charge_dipole = {} #-->compute_ion_dipole_rotationally_avg
 	shell_coords = {} # this is necessary for checking all the system via pdbs
+	angles = {} # dictionary to store ion-dipole angle values
 	#UNCOMMENT if you want to check the angles ion-COM-oxy = ion-dipole
 	#com_oxy_coords = {} # this saves the coords of com and oxygen for angle check
 	#take the coordinates
@@ -328,14 +334,32 @@ def readdcd(frame,framenumb,top,rcutoff,pdb=False,pdbcomoxy=False):
 			COM = [X_com,Y_com,Z_com]
 			#compute ion-COM distance
 			dist = compute_distance(na_coords,COM)
-			#define the shell where we are
-			shell = math.ceil(dist)
+
+			
+			#define the shell where we are in 
+			#first define the bounds
+			if width == 1: 
+				shell = math.ceil(dist) #take always the upper limit to enclose the distance within the hsell
+				#print("Distance %.4f in shell %.4f" % (dist,shell))
+			else:
+				lower_shell = math.floor(dist)
+				upper_shell = math.ceil(dist)
+				#define all the shells
+				all_shells = np.arange(lower_shell,upper_shell,width)#create as many shell as required by the width
+				for limits in all_shells:
+					#print("Comparing %.4f with %.4f" %(dist,limits))
+					if dist > limits:
+						shell = upper_shell #if the COM distance is greater than any other shell, the upper limits will be the shell
+					else: 
+						shell = limits #else the shell will be found and break the cycle
+						break
+				
+				
 			#BWRF energy
-			nrg = BarkerWatts(na_coords,res_coords,rcutoff)
+			nrg = Coulombic(na_coords,res_coords,rcutoff,dist)
 			#BWRF charge*charge and charge*dipole
 			angle_ion_com = compute_angle(na_coords,COM,oxy_coords)
-			
-			ion_charge_nrg, ion_dipole_nrg = compute_ion_dipole(na_coords,COM,rcutoff,angle_ion_com)
+			ion_dipole_nrg = compute_ion_dipole(na_coords,COM,rcutoff,angle_ion_com)
 			#Rot-avg RF. In this case compute the potential as a sum of contributions
 			#between ion and water-dipole using as a distance the COM
 			ion_dipole_rot_nrg = compute_ion_dipole_rotationally_avg(na_coords,COM,rcutoff)
@@ -345,18 +369,20 @@ def readdcd(frame,framenumb,top,rcutoff,pdb=False,pdbcomoxy=False):
 				#here if the shell is in shell_coords it means that
 				#it's present also in all the other dictionary
 				shell_coords[shell].append(COM) #pdb purposes
-				BWRF[shell].append(nrg) #BWRF
-				BWRF_charge_charge[shell].append(ion_charge_nrg) # BW ion charge charge
-				RF_charge_dipole[shell].append(ion_dipole_nrg) # RF ion dipole interaction
-				AVG_RF_charge_dipole[shell].append(ion_dipole_rot_nrg) #Rot AVG RF ion dipole interaction, with
+				coulomb[shell]+=nrg #BWRF
+				#BWRF_charge_charge[shell]+=ion_charge_nrg # BW ion charge charge
+				charge_dipole[shell]+=ion_dipole_nrg # RF ion dipole interaction
+				avg_rot_charge_dipole[shell]+=ion_dipole_rot_nrg#Rot AVG RF ion dipole interaction, with
+				angles[shell].append(angle_ion_com)
 				#position (r) given by the COM
 
 			else:
 				shell_coords[shell] = [COM]
-				BWRF[shell] = [nrg]
-				BWRF_charge_charge[shell]=[ion_charge_nrg]
-				RF_charge_dipole[shell]=[ion_dipole_nrg]
-				AVG_RF_charge_dipole[shell]=[ion_dipole_rot_nrg]
+				coulomb[shell] = nrg
+				#BWRF_charge_charge[shell]=ion_charge_nrg
+				charge_dipole[shell]=ion_dipole_nrg
+				avg_rot_charge_dipole[shell]=ion_dipole_rot_nrg
+				angles[shell] = [angle_ion_com]
 			
 			#UNCOMMNET below if you want to check angles
 			#if shell < 10.0: #take only the  first shells, to simplify the visualization
@@ -394,7 +420,7 @@ def readdcd(frame,framenumb,top,rcutoff,pdb=False,pdbcomoxy=False):
 			print("\n Did you try to uncomment the relevant part for the angle script to work?")
 
 
-	return BWRF,BWRF_charge_charge,RF_charge_dipole,AVG_RF_charge_dipole
+	return coulomb,charge_dipole,avg_rot_charge_dipole,shell_coords,angles
 
 
 def write_pdbcomoxy(coords,nacoords,idx):
@@ -525,7 +551,7 @@ def write_pdb(coords,nacoords,idx):
 #Load traj, top and coord
 traj = sys.argv[1]
 top = sys.argv[2]
-crd = sys.argv[3]
+width = float(sys.argv[3]) # e.g. 1, 0.5, 0.2
 print("Trajectory loading...")
 print("This may take a while...")
 
@@ -547,38 +573,37 @@ nframes = len(mdtrajdcd) # this is necessary to compute the radius of cutoff
 
 
 #intialize the dictionary
-BWRF = {} # BWRF charge-charge-charge --> BarkerWatts()
+coulomb = {} # BWRF charge-charge-charge --> BarkerWatts()
 #BWRF charge vs dipole's charges, in this case the distance ion-charges are computed
-#as a function of the angle between the ion and the middle point of the dipole
-BWRF_charge_charge = {} #-->compute_ion_dipole
-#BWRF charge vs dipole, in this case there are no dipole's charges but we are considering
+#as a function of the angle between the ion and the middle point of the dipoleg
 #the whole dipole moment mu and multiplying it with cos(theta)
-BWRF_charge_dipole = {} #-->compute_ion_dipole
-#Charge dipole Reaction field interaction
-RF_charge_dipole = {} #-->compute_ion_dipole_rot_avg
+charge_dipole = {} #-->compute_ion_dipole
 #rotationally averaged charge dipole reaction field interaction
 #this is compute by placing as position the actual position of the waters'COM
-AVG_RF_charge_dipole = {} #-->compute_ion_dipol_rotationally_avg
+avg_rot_charge_dipole = {} #-->compute_ion_dipol_rotationally_avg
 #rotationally averaged charge dipole reaction field interaction
 #computed as N*potential where N is the number of water molecule per shell
 #and waters'positions are considered at half of the shell length
-AVG_RF_charge_dipole_integrated = {} #-->compute_ion_dipole_rotataionlly_avg_integrated
+avg_rot_charge_dipole_int = {} #-->compute_ion_dipole_rotataionlly_avg_integrated
 #create a dictionary to store the average number of water molecule in each shell, this 
 #could be useful
 average_water_number = {}
+#store the values of angles-dipole for each shell
+angles_dict = {}
 
 #define a counter
 counter=0
 #comptue the average radius of cutoff, and skip the first 1000 frames
 minimum = 100000 #set a minumim (higher than the expected box length)
 print("Computing the minimum box length...")
-for framenumber in range(0,nframes):
+for framenumber in range(0,nframes):#
 	current, cell_lengths, angles = mdtrajdcd.read(n_frames=1) #for each frame extract the cell_lengths
 	for length in cell_lengths[0]: #comparison
 		if length< minimum:
 			minimum = length
+
 #set the cutoff
-rcutoff = minimum
+rcutoff =minimum
 print("Computed average radius of cutoff %.4f" % rcutoff)
 #reverse the trajectory and let's the main function commence
 mdtrajdcd.seek(0)
@@ -587,91 +612,105 @@ for framenumber in range(start,end):
 	print("Processing frame %d..." % framenumber)
 	current, cell_lengths, angles = mdtrajdcd.read(n_frames=1)
 	#main function:
-	nrg_BWRF,nrg_BWRF_charge_charge,nrg_RF_charge_dipole,nrg_AVG_RF_charge_dipole= readdcd(current,framenumber,mdtrajtop,rcutoff)
+	nrg_coulomb,nrg_charge_dipole,nrg_avg_charge_dipole,shells,angles_shell= readdcd(current,framenumber,mdtrajtop,rcutoff,width)
 
 	#compute the integrated rotationally averaged charge-dipole RF interaction
-	for key in nrg_BWRF.keys(): #take the nrg_BWRF keys, which are the same for all the dictionaries
-		position = key + 0.5 #this is the average position of the molecule
-		nwaters = len(nrg_BWRF[key]) #this is the number of water molecule within the shell
-		nrg_AVGRF_integral = compute_ion_dipole_rotationally_avg_integrated(nwaters,position,rcutoff)
-		if key in AVG_RF_charge_dipole_integrated:
-			AVG_RF_charge_dipole_integrated[key].append(nrg_AVGRF_integral)
-			average_water_number[key].append(len(nrg_BWRF[key]))
+	for key in shells.keys(): #take the nrg_BWRF keys, which are the same for all the dictionaries
+		position = key - (width/2.0) #this is the average position of the molecule - 1 A width shell
+		nwaters = len(shells[key]) #this is the number of water molecule within the shell
+		nrg_avg_integral = compute_ion_dipole_rotationally_avg_integrated(nwaters,position,rcutoff)
+
+		if key in avg_rot_charge_dipole_int:
+			avg_rot_charge_dipole_int[key].append(nrg_avg_integral)
+			average_water_number[key].append(len(shells[key]))
 		else:
-			AVG_RF_charge_dipole_integrated[key] = [nrg_AVGRF_integral]#REMEMBER TO AVERAGE IT!
-			average_water_number[key]=[len(nrg_BWRF[key])]#REMEMBER TO AVERAGE IT!
+			avg_rot_charge_dipole_int[key] = [nrg_avg_integral]#REMEMBER TO AVERAGE IT!
+			average_water_number[key] = [len(shells[key])]
 
-	#compute the average for each nrg dictionary
-	for key in nrg_BWRF.keys():
-		if key in BWRF: #this means that the key is in all the dictionaries
-		
-			avg = np.mean(nrg_BWRF[key])
-			BWRF[key].append(avg)
+	#add all the  results to each dictionary
+	for key in shells.keys():
+		if key in coulomb: #this means that the key is in all the dictionaries
+			coulomb[key].append(nrg_coulomb[key])
+			charge_dipole[key].append(nrg_charge_dipole[key])
+			avg_rot_charge_dipole[key].append(nrg_avg_charge_dipole[key])
+			#compute the average angle for each shell
+			angles_dict[key].append(np.mean(angles_shell[key]))
 
-			avg = np.mean(nrg_BWRF_charge_charge[key])
-			BWRF_charge_charge[key].append(avg)
-
-			avg = np.mean(nrg_RF_charge_dipole[key])
-			RF_charge_dipole[key].append(avg)
-
-			avg = np.mean(nrg_AVG_RF_charge_dipole[key])
-			AVG_RF_charge_dipole[key].append(avg)
 		else:
-			avg = np.mean(nrg_BWRF[key])
-			BWRF[key]=[avg]
+			coulomb[key]=[nrg_coulomb[key]]
+			charge_dipole[key]=[nrg_charge_dipole[key]]
+			avg_rot_charge_dipole[key]=[nrg_avg_charge_dipole[key]]
+			angles_dict[key] = [np.mean(angles_shell[key])]
 
-			avg = np.mean(nrg_BWRF_charge_charge[key])
-			BWRF_charge_charge[key]=[avg]
-
-			avg = np.mean(nrg_RF_charge_dipole[key])
-			RF_charge_dipole[key]=[avg]
-
-			avg = np.mean(nrg_AVG_RF_charge_dipole[key])
-			AVG_RF_charge_dipole[key]=[avg]
 	counter+=1
 	#end = time.time()
 	#print("Time %.4f" %(end-start))
 	#if counter ==100:
-	#	breakorganizzarmi per fare altre cose
+	#	break
 
 #once we have stored all the average energies for each shell, compute the 
 #total average
 #create an output directory
-outputfold = "output_%s_%s" % (start,end) 
+
+
+outputfold = "output_%s_%s_%.2f" % (start,end,width) 
 if  not os.path.exists(outputfold):
     os.makedirs(outputfold)
 
 #compute the average number of water mols for each shell
+water_file = open("%s/n_waters.csv" % outputfold,"w")
 for key in average_water_number.keys():
 	average_water_number[key]=[np.mean(average_water_number[key]),np.std(average_water_number[key])]
+	#write the average water molecules in a file
+	#mean,std
+	water_file.write("%.4f,%.4f,%.4f\n" % (key,average_water_number[key][0],average_water_number[key][1]))
+#write the file with all the angles
+angle_file = open("%s/angles.csv" % outputfold,"w")
+for key in angles_dict.keys():
+	angles_dict[key]= [np.mean(angles_dict[key]),np.std(angles_dict[key])]
+	angle_file.write("%.4f,%.4f,%.4f\n" % (key,angles_dict[key][0],angles_dict[key][1]))
+
 #outputfile should containt
-#shell, <water mols>, std.dev(water mols),<energy>,std.dev(energy)
+#shell,,<energy>,std.dev(energy)
 #where shell is the shell length in A, <water mols> the average number of water molecules within that shell
 #std.dev(water mols) the standard deviation of the nwater mols numb,er, <energy> the average energy of interaction
 #between ion and water in the shell, std.dev(energy) the std.dev of the energy
 
-BWRF_file = open("%s/BWRF.csv"%outputfold,"w")
-for key in BWRF.keys():
-	BWRF[key] = [np.mean(BWRF[key]),np.std(BWRF[key])]
+coulomb_file = open("%s/Coulomb.csv"%outputfold,"w")
+for key in coulomb.keys():
 
-	BWRF_file.write("%.4f,%.4f,%.4f,%.8f,%.8f\n" % (key,average_water_number[key][0],average_water_number[key][1],BWRF[key][0],BWRF[key][1]) )
+	coulomb[key] = [np.mean(coulomb[key]),np.std(coulomb[key])]
 
-BWRF_charge_charge_file = open("%s/BWRF_charge_charge.csv"%outputfold,"w")	
-for key in BWRF_charge_charge.keys():
-	BWRF_charge_charge[key] = [np.mean(BWRF_charge_charge[key]),np.std(BWRF_charge_charge[key])]
-	BWRF_charge_charge_file.write("%.4f,%.4f,%.4f,%.8f,%.8f\n" % (key,average_water_number[key][0],average_water_number[key][1],BWRF_charge_charge[key][0],BWRF_charge_charge[key][1]))
+	coulomb_file.write("%.4f,%.8f,%.8f\n" % (key,coulomb[key][0],coulomb[key][1]) )
 
-RF_charge_dipole_file = open("%s/RF_charge_dipole.csv"%outputfold,"w")
-for key in RF_charge_dipole.keys():
-	RF_charge_dipole[key] = [np.mean(RF_charge_dipole[key]),np.std(RF_charge_dipole[key])]
-	RF_charge_dipole_file.write("%.4f,%.4f,%.4f,%.8f,%.8f\n" % (key,average_water_number[key][0],average_water_number[key][1],RF_charge_dipole[key][0],RF_charge_dipole[key][1]))
+charge_dipole_file = open("%s/charge_dipole.csv"%outputfold,"w")
+for key in charge_dipole.keys():
+	charge_dipole[key] = [np.mean(charge_dipole[key]),np.std(charge_dipole[key])]
+	charge_dipole_file.write("%.4f,%.8f,%.8f\n" % (key,charge_dipole[key][0],charge_dipole[key][1]))
 
-AVG_RF_file = open("%s/AVG_RF_dipole.csv"%outputfold,"w")
-for key in AVG_RF_charge_dipole.keys():
-	AVG_RF_charge_dipole[key] = [np.mean(AVG_RF_charge_dipole[key]),np.std(AVG_RF_charge_dipole[key])]
-	AVG_RF_file.write("%.4f,%.4f,%.4f,%.8f,%.8f\n" % (key,average_water_number[key][0],average_water_number[key][1],AVG_RF_charge_dipole[key][0],AVG_RF_charge_dipole[key][1]))
+avg_rot_charge_dipole_file = open("%s/avg_rot_charge_dipole.csv"%outputfold,"w")
+for key in avg_rot_charge_dipole.keys():
+	avg_rot_charge_dipole[key] = [np.mean(avg_rot_charge_dipole[key]),np.std(avg_rot_charge_dipole[key])]
+	avg_rot_charge_dipole_file.write("%.4f,%.8f,%.8f\n" % (key,avg_rot_charge_dipole[key][0],avg_rot_charge_dipole[key][1]))
 
-AVG_RF_int_file = open("%s/AVG_RF_int_dipole.csv"%outputfold,"w")
-for key in AVG_RF_charge_dipole_integrated.keys():
-	AVG_RF_charge_dipole_integrated[key] = [np.mean(AVG_RF_charge_dipole_integrated[key]),np.std(AVG_RF_charge_dipole_integrated[key])]
-	AVG_RF_int_file.write("%.4f,%.4f,%.4f,%.8f,%.8f\n" % (key,average_water_number[key][0],average_water_number[key][1],AVG_RF_charge_dipole_integrated[key][0],AVG_RF_charge_dipole_integrated[key][1]))
+
+avg_rot_charge_dipole_int_file = open("%s/avg_rot_charge_dipole_int.csv"%outputfold,"w")
+for key in avg_rot_charge_dipole_int.keys():
+	avg_rot_charge_dipole_int[key] = [np.mean(avg_rot_charge_dipole_int[key]),np.std(avg_rot_charge_dipole_int[key])]
+	avg_rot_charge_dipole_int_file.write("%.4f,%.8f,%.8f\n" % (key,avg_rot_charge_dipole_int[key][0],avg_rot_charge_dipole_int[key][1]))
+
+#add a readme to each folder
+readme_file = open("%s/README" % outputfold,"w")
+readme_file.write("""Coulomb.csv:  Coulombic interaction 
+charge_dipole.csv : Charge-Dipole interaction (dipole-ion)
+avg_rot_charge_dipole.csv: Rotationally Averaged charge-dipole interaction, setting position r with COM positions
+avg_rot_charge_dipole_int.csv: Rotationally Averaged charge-dipole  interaction, computed as N_waters*potential, setting molecules in the middle of each shell 
+angles.csv: average angle and std.dev for each shell, in rads
+n_waters.csv: average numbe rof water molecule for each shell and std.dev""")
+water_file.close()
+angle_file.close()
+coulomb_file.close()
+charge_dipole_file.close()
+avg_rot_charge_dipole_file.close()
+avg_rot_charge_dipole_int_file.close()
+readme_file.close()

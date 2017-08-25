@@ -1,0 +1,10 @@
+1) Create an useful file in each directory
+Useful file means collect for each value of ion-dipole distance the energy (theta)
+r_theta_extract.py: must be placed in al lthe  l_* folders, it takes all the  *_deg/computed.dat and 
+                    *_deg/theory.dat files and create an output file r_theta.csv:
+                    r_val_1 , theta_1, nrg_theory, nrg_computed
+                    r_val_1 , theta_2, nrg_theory, nrg_computed
+                                     ...
+                    r_val_2 , theta_1, nrg_theory, nrg_computed  and so on
+
+

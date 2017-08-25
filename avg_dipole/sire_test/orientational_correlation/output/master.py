@@ -22,11 +22,13 @@ from functools import partial
 try:
     traj = sys.argv[1]
     top = sys.argv[2]
-    crd = sys.argv[3]
+    width = sys.argv[3]
+    reactionfield = sys.argv[4]  # options: RF or NO
 except:
     traj ="traj000000001.dcd"
     top = "SYSTEM.top"
-    crd = "SYSTEM.crd"
+    width = 1.0
+    reactionfield = "RF"
 
 nproc = 8
 nframes = 20000
@@ -53,10 +55,18 @@ for i,val in enumerate(chunks_list,0):
     end   = val[1]
     ok_file = "foo_%d.out" % i
     err_file = "foo_%d.err" % i
-    cmd = "nohup python orientation_distribution_function.py %s %s %s %d %d  > %s 2> %s </dev/null &" %(traj,top,crd,start,end,ok_file,err_file)
-    print(cmd)
-    os.system(cmd)
-
+    if reactionfield == "RF":
+        cmd = "nohup python orientation_distribution_function_RF.py %s %s %s %d %d  > %s 2> %s </dev/null &" %(traj,top,width,start,end,ok_file,err_file)
+        print(cmd)
+        os.system(cmd)
+    elif reactionfield=="NO":
+        cmd = "nohup python orientation_distribution_function.py %s %s %s %d %d > %s 2> %s </dev/null &" % (traj,top,width,start,end,ok_file,err_file)
+        print(cmd)
+        os.system(cmd)
+    else:
+        print("ERROR! The reaction field methods is wrong!")
+        print("Choices: RF for reaction field or NO for no reaction field")
+        sys.exit(-1)
 
 
 

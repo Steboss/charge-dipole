@@ -1,0 +1,6 @@
+inputfiles to create a ion (na+) vs water system
+
+sodium ion topology and crds (na.prmtop na.rst7) were created with tleap
+the sam efor water tip3p (loading T3P in leap), giving water.prmtop and water.rst7
+To merge the two topologies I am using parmed, merge.py
+

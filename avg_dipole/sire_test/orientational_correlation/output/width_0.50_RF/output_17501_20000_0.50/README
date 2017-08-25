@@ -1,0 +1,6 @@
+BWRF.csv:  Coulombic interaction under Barker Watts reaction field (charge-charge-charge)
+RF_charge_dipole.csv : Charge-Dipole reaction field interaction (dipole-ion)
+AVG_RF_dipole.csv: Rotationally Averaged charge-dipole reaction field interaction, setting position r with COM positions
+AVG_RF_int_dipole.csv: Rotationally Averaged charge-dipole reaction field interaction, computed as N_waters*potential, setting molecules in the middle of each shell 
+angles.csv: average angle and std.dev for each shell, in rads
+n_waters.csv: average numbe rof water molecule for each shell and std.dev
