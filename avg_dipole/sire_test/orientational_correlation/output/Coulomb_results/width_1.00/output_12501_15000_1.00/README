@@ -1,0 +1,6 @@
+Coulomb.csv:  Coulombic interaction 
+charge_dipole.csv : Charge-Dipole interaction (dipole-ion)
+avg_rot_charge_dipole.csv: Rotationally Averaged charge-dipole interaction, setting position r with COM positions
+avg_rot_charge_dipole_int.csv: Rotationally Averaged charge-dipole  interaction, computed as N_waters*potential, setting molecules in the middle of each shell 
+angles.csv: average angle and std.dev for each shell, in rads
+n_waters.csv: average numbe rof water molecule for each shell and std.dev

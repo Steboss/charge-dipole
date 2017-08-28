@@ -30,8 +30,8 @@ outputs = []
 ifiles = []
 for inpt in inptf:
     width = float(inpt.split("_")[3].split("/")[0])
-    if width ==1.0 :
-        continue
+    #if width ==1.0 :
+    #    continue
     if width in widths:
         pass
     else:
@@ -63,6 +63,8 @@ AVG_RF_int_dipole = {} #--> AVG_RF_int_dipole.csv
 AVG_RF_int_dipole_std = {}
 n_waters = {}#--> n_waters.csv
 n_waters_std = {}
+
+shell_list = []
 #we will use it to go through later for printing ordered shells
 
 
@@ -74,13 +76,13 @@ if  rf =="RF":
     bwrf_keyword = "BWRF"
     rf_charge_dipole_keyword = "RF_charge_dipole"
     avg_rf_dipole_keyword = "AVG_RF_dipole"
-    avg_rf_int_dipole_keyword = "AVG_RF_INT_dipole"
+    avg_rf_int_dipole_keyword = "INT_dipole"
 elif rf=="NO":
     print("No reaction field calculations...")
-    bwrf_keyword = "Coulomb"
-    rf_charge_dipole_keyword = "charge_dipole"
-    avg_rf_dipole_keyword = "avg_rot_charge_dipole"
-    avg_rf_int_dipole_keyword = "avg_rot_charge_dipole_int"
+    bwrf_keyword = "/Coulomb"
+    rf_charge_dipole_keyword = "/charge_dipole.csv"
+    avg_rf_dipole_keyword = "/avg_rot_charge_dipole.csv"
+    avg_rf_int_dipole_keyword = "/avg_rot_charge_dipole_int.csv"
 else:
     print("Wrong RF choice. It's possible RF - for reaction field calculations- or NO - for non reaction field calcualtions...")
     sys.exit(-1)
@@ -97,11 +99,12 @@ for width in widths:
             readfile = open(filename,"r").readlines()
             energy_type = filename.split("/")[1].split(".csv")[0]
             #recognize what file is
-            if bwrf_keyword in energy_type:
+            if bwrf_keyword in filename:
                 #BWRF
                 #for the moment  angle.csv has no shell, do it 
                 for lines in readfile:
                     shell = float(lines.split(",")[0])
+                    
                     nrg = float(lines.split(",")[1])
                     stdnrg = float(lines.split(",")[2])
                     if shell in BWRF : 
@@ -111,9 +114,10 @@ for width in widths:
                         BWRF[shell]=[]
                         BWRF[shell].append(nrg)
                         BWRF_std[shell] = stdnrg
+                        shell_list.append(shell)
             
 
-            elif rf_charge_dipole_keyword in energy_type:
+            elif rf_charge_dipole_keyword in filename:
                 #RF_charge_dipole
                 for lines in readfile:
                     shell = float(lines.split(",")[0])
@@ -127,7 +131,7 @@ for width in widths:
                         RF_charge_dipole[shell].append(nrg)
                         RF_charge_dipole_std[shell] = stdnrg
 
-            elif avg_rf_dipole_keyword in energy_type:
+            elif avg_rf_dipole_keyword in filename:
                 for lines in readfile:
                     shell = float(lines.split(",")[0])
                     nrg = float(lines.split(",")[1])
@@ -140,7 +144,7 @@ for width in widths:
                         AVG_RF_dipole[shell].append(nrg)
                         AVG_RF_dipole_std[shell] = stdnrg
 
-            elif avg_rf_int_dipole_keyword in energy_type:
+            elif avg_rf_int_dipole_keyword in filename:
                 for lines in readfile:
                     shell =  float(lines.split(",")[0])
                     nrg = float(lines.split(",")[1])
@@ -153,7 +157,7 @@ for width in widths:
                         AVG_RF_int_dipole[shell].append(nrg)
                         AVG_RF_int_dipole_std[shell] = stdnrg
 
-            elif "n_waters" in energy_type:
+            elif "n_waters" in filename:
                 for lines in readfile:
                     shell = float(lines.split(",")[0])
                     n_wat = float(lines.split(",")[1])
@@ -176,6 +180,8 @@ for width in widths:
     #compute the average
     print("Saving file")
 
+    #sort the shells
+    shell_list.sort()
     
     #since the shells are common to all te dictionaries, we can cycle through 
     #BWRF.keys() and compute the average and std err
@@ -188,9 +194,8 @@ for width in widths:
     AVG_RF_dipole_file = open("%s/AVG_RF_dipole.csv"%outputfolder,"w") # AVG_RF dipole
     AVG_RF_int_dipole_file = open("%s/AVG_RF_int_dipole.csv" % outputfolder,"w")#AVG_RF_dipole integrated
     waters_file = open("%s/waters.csv"%outputfolder,"w")
-    
 
-    for key in BWRF.keys():
+    for key  in shell_list:
         #output: shell, nrg, stddev
         BWRF_file.write("%.4f,%.8f,%.8f\n" % (key,np.mean(BWRF[key]), BWRF_std[key]))
         RF_charge_dipole_file.write("%.4f,%.8f,%.8f\n" %(key,np.mean(RF_charge_dipole[key]),RF_charge_dipole_std[key]))
@@ -216,5 +221,6 @@ for width in widths:
     AVG_RF_int_dipole_std = {}
     n_waters = {}#--> n_waters.csv
     n_waters_std = {}
+    shell_list = []
 
 print("Everything 's done")
