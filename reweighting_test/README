@@ -1,0 +1,12 @@
+Frist test for the re-weigth script
+
+In this case I have simulated a sodium ion in different box sizes
+with different cutoffs and I am computing the correction terms:
+
+1) BWRF within the box
+2) BWRF shifted within the box
+
+once charge-dipole is ready:
+
+3) BWRF over all the box
+4) BWRF shifted over all the box
